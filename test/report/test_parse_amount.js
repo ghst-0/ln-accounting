@@ -44,7 +44,7 @@ const tests = [
 
 tests.forEach(({args, description, error, expected}) => {
   return test(description, (t, end) => {
-    if (!!error) {
+    if (error) {
       throws(() => parseAmount(args), new Error(error), 'Got expected error');
     } else {
       const {tokens} = parseAmount(args);

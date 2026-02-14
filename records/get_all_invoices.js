@@ -84,7 +84,7 @@ module.exports = ({after, before, lnd}, cbk) => {
               limit: !token ? limit : undefined,
             },
             (err, res) => {
-              if (!!err) {
+              if (err) {
                 return cbk(err);
               }
 
@@ -109,7 +109,7 @@ module.exports = ({after, before, lnd}, cbk) => {
             });
           },
           err => {
-            if (!!err) {
+            if (err) {
               return cbk(err);
             }
 

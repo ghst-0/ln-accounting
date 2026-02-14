@@ -43,13 +43,13 @@ module.exports = args => {
 
     try {
       parsed = !request ? null : parsePaymentRequest({request});
-    } catch (err) {
+    } catch {
       // Ignore payment requests that cannot be parsed
       parsed = null;
     }
 
-    const notes = !!parsed ? parsed.description : payment.secret;
-    const selfTag = !!isToSelf ? '[To Self]' : String();
+    const notes = parsed ? parsed.description : payment.secret;
+    const selfTag = isToSelf ? '[To Self]' : String();
 
     return {
       amount: -payment.tokens,
@@ -72,7 +72,7 @@ module.exports = args => {
         category: categories.payments,
         created_at: payment.created_at,
         id: `${payment.id}:fee`,
-        notes: !!isToSelf ? 'Circular payment routing fee' : 'Routing fee',
+        notes: isToSelf ? 'Circular payment routing fee' : 'Routing fee',
         type: types.network_fee,
       };
     });

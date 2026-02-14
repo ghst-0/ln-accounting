@@ -60,7 +60,7 @@ const tests = [
 
 tests.forEach(({args, description, error, expected}) => {
   return test(description, (t, end) => {
-    if (!!error) {
+    if (error) {
       throws(() => chainReceivesAsRecords(args), new Error(error), 'Got err');
     } else {
       const {records} = chainReceivesAsRecords(args);

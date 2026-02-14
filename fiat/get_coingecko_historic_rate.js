@@ -59,7 +59,7 @@ module.exports = ({currency, date, fiat, rates, request}, cbk) => {
         });
 
         // Exit early when there is a cached result
-        if (!!rates[matching]) {
+        if (rates[matching]) {
           return cbk(null, {cents: rates[matching]});
         }
 
@@ -73,7 +73,7 @@ module.exports = ({currency, date, fiat, rates, request}, cbk) => {
           timeout: remoteServiceTimeoutMs,
         },
         (err, r, body) => {
-          if (!!err) {
+          if (err) {
             return cbk([503, 'UnexpectedErrGettingCoingeckoPastRate', {err}]);
           }
 

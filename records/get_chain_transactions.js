@@ -14,7 +14,6 @@ const {getProxyVout} = require('./../esplora');
 const dateAsMs = date => new Date(date).getTime();
 const {fromHex} = Transaction;
 const interval = 200;
-const {isArray} = Array;
 const msAsBlocks = ms => Math.ceil(ms / 1000 / 60 / 2.5);
 const {now} = Date;
 const sumOf = arr => arr.reduce((sum, n) => sum + n, Number());
@@ -111,7 +110,7 @@ module.exports = ({after, before, lnd, network, request}, cbk) => {
         return asyncMapSeries(sweepTransactions, (tx, cbk) => {
           return asyncMapSeries(tx.spends, (spend, cbk) => {
             // Exit early when tokens are already known
-            if (!!spend.tokens) {
+            if (spend.tokens) {
               return cbk(null, spend);
             }
 
@@ -123,7 +122,7 @@ module.exports = ({after, before, lnd, network, request}, cbk) => {
                 vout: spend.transaction_vout,
               },
               (err, res) => {
-                if (!!err) {
+                if (err) {
                   return cbk(err);
                 }
 
@@ -137,7 +136,7 @@ module.exports = ({after, before, lnd, network, request}, cbk) => {
             cbk);
           },
           (err, spends) => {
-            if (!!err) {
+            if (err) {
               return cbk(err);
             }
 
@@ -218,7 +217,7 @@ module.exports = ({after, before, lnd, network, request}, cbk) => {
                 id: channel.close_transaction_id,
               },
               (err, res) => {
-                if (!!err) {
+                if (err) {
                   return cbk(err);
                 }
 

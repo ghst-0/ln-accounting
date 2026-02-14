@@ -45,7 +45,7 @@ module.exports = ({api, id, request}, cbk) => {
       // Get tx details
       getDetails: ['validate', ({}, cbk) => {
         return request({json: true, url: url(api, id)}, (err, r, body) => {
-          if (!!err) {
+          if (err) {
             return cbk([503, 'UnexpectedErrorGettingEsploraTx', {err}]);
           }
 

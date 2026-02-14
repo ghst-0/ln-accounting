@@ -5,7 +5,6 @@ const api = 'https://api.coindesk.com/v1/';
 const centsPerDollar = 100;
 const closePath = 'bpi/historical/close.json';
 const dayFormat = 'yyyy-mm-dd';
-const decBase = 10;
 const msPerDay = 1000 * 60 * 60 * 24;
 const {parse} = Date;
 const remoteServiceTimeoutMs = 30 * 1000;
@@ -62,7 +61,7 @@ module.exports = ({currency, date, fiat, request}, cbk) => {
           url: `${api}${closePath}`,
         },
         (err, r, body) => {
-          if (!!err) {
+          if (err) {
             return cbk([503, 'UnexpectedErrorGettingHistoricRate', {err}]);
           }
 

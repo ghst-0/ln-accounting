@@ -1,7 +1,6 @@
 const asyncAuto = require('async/auto');
 const {returnResult} = require('asyncjs-util');
 
-const dateFromEpoch = epoch => new Date(epoch * 1e3).toISOString();
 const {isArray} = Array;
 const url = (api, id) => `${api}tx/${id}`;
 
@@ -45,7 +44,7 @@ module.exports = ({api, id, request, vout}, cbk) => {
       // Get tx details
       getDetails: ['validate', ({}, cbk) => {
         return request({json: true, url: url(api, id)}, (err, r, body) => {
-          if (!!err) {
+          if (err) {
             return cbk([503, 'UnexpectedErrorGettingExploraTx', {err}]);
           }
 

@@ -61,14 +61,12 @@ const tests = [
 
 tests.forEach(({args, description, error, expected}) => {
   return test(description, async () => {
-    if (!!error) {
+    if (error) {
       await rejects(getFiatValues(args), error, 'Got expected error');
     } else {
       const {rates} = await getFiatValues(args);
 
       deepEqual(rates, expected.rates, 'Rates returned');
     }
-
-    return;
   });
 });

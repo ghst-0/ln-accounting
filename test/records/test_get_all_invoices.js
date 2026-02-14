@@ -20,7 +20,7 @@ const tests = [
       lnd: {
         default: {
           listInvoices: (args, cbk) => {
-            if (!!args.index_offset) {
+            if (args.index_offset) {
               return cbk(null, {
                 first_index_offset: '1',
                 invoices: [],
@@ -92,14 +92,12 @@ const tests = [
 
 tests.forEach(({args, description, error, expected}) => {
   return test(description, async () => {
-    if (!!error) {
+    if (error) {
       await rejects(getAllInvoices(args), error, 'Got expected error');
     } else {
       const {invoices} = await getAllInvoices(args);
 
       deepEqual(invoices, expected.invoices, 'Got expected result');
     }
-
-    return;
   });
 });

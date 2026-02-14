@@ -20,7 +20,7 @@ const tests = [
       lnd: {
         default: {
           listPayments: (args, cbk) => {
-            if (!!args.index_offset) {
+            if (args.index_offset) {
               return cbk(null, {
                 first_index_offset: '1',
                 payments: [],
@@ -179,7 +179,7 @@ const tests = [
       lnd: {
         default: {
           listPayments: (args, cbk) => {
-            if (!!args.index_offset) {
+            if (args.index_offset) {
               return cbk(null, {
                 first_index_offset: '1',
                 payments: [],
@@ -263,14 +263,12 @@ const tests = [
 
 tests.forEach(({args, description, error, expected}) => {
   return test(description, async () => {
-    if (!!error) {
+    if (error) {
       await rejects(getAllPayments(args), error, 'Got expected error');
     } else {
       const {payments} = await getAllPayments(args);
 
       deepEqual(payments, expected.payments, 'Got expected result');
     }
-
-    return;
   });
 });

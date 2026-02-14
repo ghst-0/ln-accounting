@@ -4,7 +4,6 @@ const {getChannels} = require('ln-service');
 const {getClosedChannels} = require('ln-service');
 const {getForwards} = require('ln-service');
 const {getIdentity} = require('ln-service');
-const {getPayments} = require('ln-service');
 const {getPendingChannels} = require('ln-service');
 const {returnResult} = require('asyncjs-util');
 
@@ -18,11 +17,9 @@ const {getAllInvoices} = require('./../records');
 const {getAllPayments} = require('./../records');
 const {getChainTransactions} = require('./../records');
 const {getFiatValues} = require('./../fiat');
-const {harmonize} = require('./../harmony');
 const {invoicesAsRecords} = require('./../harmony');
 const {paymentsAsRecords} = require('./../harmony');
 const {recordsWithFiat} = require('./../harmony');
-const {types} = require('./../harmony');
 
 const earlyStartDate = '2017-08-24T08:57:37.000Z';
 const interval = retryCount => Math.random() * 5000 * Math.pow(2, retryCount);
@@ -420,7 +417,7 @@ module.exports = (args, cbk) => {
       report: ['recordsWithFiat', ({recordsWithFiat}, cbk) => {
         try {
           return cbk(null, categorizeRecords({records: recordsWithFiat}));
-        } catch (err) {
+        } catch {
           return cbk([500, 'FailedToCategorizeRecords']);
         }
       }],

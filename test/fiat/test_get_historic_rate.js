@@ -4,8 +4,6 @@ const test = require('node:test');
 
 const getHistoricRate = require('./../../fiat/get_historic_rate');
 
-const date = new Date().toISOString();
-
 const api = ({}, cbk) => {
   return cbk(null, null, {market_data: {current_price: {usd: 12.34}}});
 };
@@ -64,14 +62,12 @@ const tests = [
 
 tests.forEach(({args, description, error, expected}) => {
   return test(description, async () => {
-    if (!!error) {
+    if (error) {
       await rejects(getHistoricRate(args), error, 'Gote expected error');
     } else {
       const {cents} = await getHistoricRate(args);
 
       equal(cents, expected.cents, 'Rate returned');
     }
-
-    return;
   });
 });

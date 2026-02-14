@@ -48,10 +48,10 @@ module.exports = ({invoices}) => {
 
       const [payment] = payments;
 
-      const fromKey = !!payment ? from(payment.messages) : null;
+      const fromKey = payment ? from(payment.messages) : null;
       const isKeySend = !payment ? false : !!hasKeySend(payment.messages);
 
-      const fromTag = !!fromKey ? `Marked from ${fromKey.value}` : '';
+      const fromTag = fromKey ? `Marked from ${fromKey.value}` : '';
       const pushTag = !isKeySend ? '' : '[Push Payment]';
 
       return {

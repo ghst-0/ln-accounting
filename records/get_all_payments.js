@@ -108,7 +108,7 @@ module.exports = ({after, lnd}, cbk) => {
             const limit = !token ? paymentsPagingLimit : undefined;
 
             return getPayments({limit, lnd, token}, (err, res) => {
-              if (!!err) {
+              if (err) {
                 return cbk(err);
               }
 

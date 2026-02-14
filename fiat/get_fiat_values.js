@@ -61,7 +61,7 @@ module.exports = ({currency, dates, fiat, provider, rate, request}, cbk) => {
           const roughDate = date.substring(Number(), dateFormat.length);
 
           // Exit early when the fiat value has already been found
-          if (!!rates[roughDate]) {
+          if (rates[roughDate]) {
             return cbk(null, {date, cents: rates[roughDate]});
           }
 
@@ -77,7 +77,7 @@ module.exports = ({currency, dates, fiat, provider, rate, request}, cbk) => {
               request,
             },
             (err, rate) => {
-              if (!!err) {
+              if (err) {
                 return cbk(err);
               }
 
@@ -89,7 +89,7 @@ module.exports = ({currency, dates, fiat, provider, rate, request}, cbk) => {
           cbk);
         },
         (err, rates) => {
-          if (!!err) {
+          if (err) {
             return cbk(err);
           }
 

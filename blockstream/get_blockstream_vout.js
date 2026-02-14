@@ -51,7 +51,7 @@ module.exports = ({id, network, request, vout}, cbk) => {
           url: url(net(network), id),
         },
         (err, r, body) => {
-          if (!!err) {
+          if (err) {
             return cbk([503, 'UnexpectedErrorGettingBlockstreamTx', {err}]);
           }
 

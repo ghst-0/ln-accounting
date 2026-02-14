@@ -1,6 +1,5 @@
 const {Parser} = require('hot-formula-parser');
 
-const {ceil} = Math;
 const {isArray} = Array;
 const {keys} = Object;
 const {round} = Math;
@@ -32,8 +31,6 @@ module.exports = ({amount, variables}) => {
   keys(variables || {}).forEach(key => {
     parser.setVariable(key.toLowerCase(), variables[key]);
     parser.setVariable(key.toUpperCase(), variables[key]);
-
-    return;
   });
 
   parser.setVariable('BTC', 1e8);
@@ -68,7 +65,7 @@ module.exports = ({amount, variables}) => {
     break;
   }
 
-  if (!!parsed.error) {
+  if (parsed.error) {
     throw new Error(parsed.error);
   }
 

@@ -98,14 +98,12 @@ const tests = [
 
 tests.forEach(({args, description, error, expected}) => {
   return test(description, async () => {
-    if (!!error) {
+    if (error) {
       await rejects(method(args), error, 'Got expected error');
     } else {
       const res = await method(args);
 
       deepEqual(res, expected, 'Got expected result');
     }
-
-    return;
   });
 });

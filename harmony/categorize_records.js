@@ -54,8 +54,6 @@ module.exports = ({records}) => {
 
     report[category] = categoryRecords;
     report[`${category}_csv`] = harmonize({records: categoryRecords}).csv;
-
-    return;
   });
 
   return report;

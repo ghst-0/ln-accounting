@@ -64,7 +64,7 @@ module.exports = ({currency, date, fiat, request}, cbk) => {
           url: `${api}assets/${assets[currency]}/history`,
         },
         (err, r, body) => {
-          if (!!err) {
+          if (err) {
             return cbk([503, 'UnexpectedErrorGettingCoincapRate', {err}]);
           }
 
