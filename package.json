@@ -34,7 +34,7 @@
     "url": "https://github.com/alexbosworth/ln-accounting.git"
   },
   "scripts": {
-    "test": "npx nyc@17.1.0 node --experimental-test-coverage --test"
+    "test": "node --experimental-test-coverage --test"
   },
   "version": "8.0.7"
 }
