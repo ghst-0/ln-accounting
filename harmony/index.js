@@ -1,16 +1,18 @@
-const {categories} = require('./harmony');
-const categorizeRecords = require('./categorize_records');
-const chainFeesAsRecords = require('./chain_fees_as_records');
-const chainReceivesAsRecords = require('./chain_receives_as_records');
-const chainSendsAsRecords = require('./chain_sends_as_records');
-const forwardsAsRecords = require('./forwards_as_records');
-const harmonize = require('./harmonize');
-const invoicesAsRecords = require('./invoices_as_records');
-const paymentsAsRecords = require('./payments_as_records');
-const recordsWithFiat = require('./records_with_fiat');
-const {types} = require('./harmony');
+import harmony from './harmony.json' with { type: 'json' };
+import categorizeRecords from './categorize_records.js';
+import chainFeesAsRecords from './chain_fees_as_records.js';
+import chainReceivesAsRecords from './chain_receives_as_records.js';
+import chainSendsAsRecords from './chain_sends_as_records.js';
+import forwardsAsRecords from './forwards_as_records.js';
+import harmonize from './harmonize.js';
+import invoicesAsRecords from './invoices_as_records.js';
+import paymentsAsRecords from './payments_as_records.js';
+import recordsWithFiat from './records_with_fiat.js';
 
-module.exports = {
+const categories = harmony.categories;
+const types = harmony.types;
+
+export {
   categories,
   categorizeRecords,
   chainFeesAsRecords,
@@ -21,5 +23,5 @@ module.exports = {
   invoicesAsRecords,
   paymentsAsRecords,
   recordsWithFiat,
-  types,
+  types
 };

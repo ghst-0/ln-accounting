@@ -1,5 +1,5 @@
-const asyncAuto = require('async/auto');
-const {returnResult} = require('asyncjs-util');
+import asyncAuto from 'async/auto.js';
+import { returnResult } from 'asyncjs-util';
 
 const asCoingeckoDate = yyyymmdd => yyyymmdd.split('-').reverse().join('-');
 const centsPerDollar = 100;
@@ -23,7 +23,7 @@ const url = 'https://api.coingecko.com/api/v3/coins/bitcoin/history';
     cents: <Cents Per Token Number>
   }
 */
-module.exports = ({currency, date, fiat, rates, request}, cbk) => {
+export default ({currency, date, fiat, rates, request}, cbk) => {
   return new Promise((resolve, reject) => {
     return asyncAuto({
       // Check arguments

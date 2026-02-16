@@ -1,6 +1,8 @@
-const {Parser} = require('@json2csv/plainjs');
+import { Parser } from '@json2csv/plainjs';
 
-const {fields} = require('./harmony');
+import harmony from './harmony.json' with { type: 'json' };
+
+const fields = harmony.fields
 
 const {isArray} = Array;
 
@@ -28,7 +30,7 @@ const {isArray} = Array;
     csv: <Harmony Format CSV String>
   }
 */
-module.exports = ({records}) => {
+export default ({records}) => {
   if (!isArray(records)) {
     throw new Error('ExpectedRecordsToConvertToHarmonyFormat');
   }

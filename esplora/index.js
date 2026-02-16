@@ -1,4 +1,4 @@
-const getProxyTx = require('./get_proxy_tx');
-const getProxyVout = require('./get_proxy_vout');
+import getProxyTx from './get_proxy_tx.js';
+import getProxyVout from './get_proxy_vout.js';
 
-module.exports = {getProxyTx, getProxyVout};
+export { getProxyTx, getProxyVout };

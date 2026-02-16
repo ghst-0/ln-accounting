@@ -1,5 +1,4 @@
-const {categories} = require('./harmony');
-const {types} = require('./harmony');
+import harmony from './harmony.json' with { type: 'json' };
 
 /** Chain transactions as harmony records
 
@@ -28,16 +27,16 @@ const {types} = require('./harmony');
     }]
   }
 */
-module.exports = ({transactions}) => {
+export default ({transactions}) => {
   const records = transactions
     .filter(tx => !!tx.fee && !!tx.is_outgoing)
     .map(tx => ({
       amount: -tx.fee,
-      category: categories.chain_fees,
+      category: harmony.categories.chain_fees,
       created_at: tx.created_at,
       id: `${tx.id}:fee`,
       notes: `${tx.description || ''} [Chain Fee]`.trim(),
-      type: types.network_fee,
+      type: harmony.types.network_fee,
     }));
 
   return {records};

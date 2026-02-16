@@ -1,4 +1,4 @@
-const {Parser} = require('hot-formula-parser');
+import { Parser } from 'hot-formula-parser';
 
 const {isArray} = Array;
 const {keys} = Object;
@@ -21,7 +21,7 @@ const {round} = Math;
     tokens: <Tokens Number>
   }
 */
-module.exports = ({amount, variables}) => {
+export default ({amount, variables}) => {
   if (isArray(amount)) {
     throw new Error('CannotParseMultipleAmounts');
   }

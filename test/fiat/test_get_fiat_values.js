@@ -1,8 +1,7 @@
-const {deepEqual} = require('node:assert').strict;
-const {rejects} = require('node:assert').strict;
-const test = require('node:test');
+import test from 'node:test';
+import { deepEqual, rejects } from 'node:assert';
 
-const {getFiatValues} = require('./../../fiat/');
+import { getFiatValues } from './../../fiat/index.js';
 
 const date = new Date().toISOString();
 

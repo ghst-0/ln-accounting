@@ -9,7 +9,7 @@
     notes: <Formatted Notes String>
   }
 */
-module.exports = ({notes}) => {
+export default ({notes}) => {
   if (typeof notes === 'string') {
     return {notes: notes.replace(/[\r\n]/gim, ' ') || ''};
   }

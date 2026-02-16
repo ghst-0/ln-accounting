@@ -1,7 +1,6 @@
-const {parsePaymentRequest} = require('ln-service');
+import { parsePaymentRequest } from 'ln-service';
 
-const {categories} = require('./harmony');
-const {types} = require('./harmony');
+import harmony from './harmony.json' with { type: 'json' };
 
 /** Payment as Harmony records
 
@@ -33,7 +32,7 @@ const {types} = require('./harmony');
     }]
   }
 */
-module.exports = args => {
+export default args => {
   // Only look at payments where funds were sent
   const payRecords = args.payments.map(payment => {
     const isToSelf = payment.destination === args.public_key;
@@ -53,12 +52,12 @@ module.exports = args => {
 
     return {
       amount: -payment.tokens,
-      category: categories.payments,
+      category: harmony.categories.payments,
       created_at: payment.created_at,
       id: payment.id,
       notes: `${selfTag} ${notes}`.trim(),
       to_id: payment.destination,
-      type: types.spend,
+      type: harmony.types.spend,
     };
   });
 
@@ -69,11 +68,11 @@ module.exports = args => {
 
       return {
         amount: -payment.fee,
-        category: categories.payments,
+        category: harmony.categories.payments,
         created_at: payment.created_at,
         id: `${payment.id}:fee`,
         notes: isToSelf ? 'Circular payment routing fee' : 'Routing fee',
-        type: types.network_fee,
+        type: harmony.types.network_fee,
       };
     });
 

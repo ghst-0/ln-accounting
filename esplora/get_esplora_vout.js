@@ -1,5 +1,5 @@
-const asyncAuto = require('async/auto');
-const {returnResult} = require('asyncjs-util');
+import asyncAuto from 'async/auto.js';
+import { returnResult } from 'asyncjs-util';
 
 const {isArray} = Array;
 const url = (api, id) => `${api}tx/${id}`;
@@ -17,7 +17,7 @@ const url = (api, id) => `${api}tx/${id}`;
     tokens: <Transaction Output Tokens Number>
   }
 */
-module.exports = ({api, id, request, vout}, cbk) => {
+export default ({api, id, request, vout}, cbk) => {
   return new Promise((resolve, reject) => {
     return asyncAuto({
       // Check argument

@@ -1,8 +1,7 @@
-const {equal} = require('node:assert').strict;
-const {rejects} = require('node:assert').strict;
-const test = require('node:test');
+import test from 'node:test';
+import { equal, rejects } from 'node:assert/strict';
 
-const method = require('./../../fiat/get_coindesk_historic_rate');
+import method from './../../fiat/get_coindesk_historic_rate.js';
 
 const api = ({qs}, cbk) => {
   const bpi = {};

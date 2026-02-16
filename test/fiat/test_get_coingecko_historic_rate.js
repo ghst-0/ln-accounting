@@ -1,8 +1,7 @@
-const {deepEqual} = require('node:assert').strict;
-const {rejects} = require('node:assert').strict;
-const test = require('node:test');
+import test from 'node:test';
+import { deepEqual, rejects } from 'node:assert/strict';
 
-const method = require('./../../fiat/get_coingecko_historic_rate');
+import method from './../../fiat/get_coingecko_historic_rate.js';
 
 const makeArgs = overrides => {
   const args = {

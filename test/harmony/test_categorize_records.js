@@ -1,9 +1,7 @@
-const {deepEqual} = require('node:assert').strict;
-const {equal} = require('node:assert').strict;
-const test = require('node:test');
-const {throws} = require('node:assert').strict;
+import test from 'node:test';
+import { deepEqual, equal, throws } from 'node:assert/strict';
 
-const {categorizeRecords} = require('./../../harmony');
+import { categorizeRecords } from './../../harmony/index.js';
 
 const tests = [
   {

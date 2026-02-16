@@ -1,5 +1,4 @@
-const {categories} = require('./harmony');
-const {types} = require('./harmony');
+import harmony from './harmony.json' with { type: 'json' };
 
 const {isArray} = Array;
 
@@ -31,19 +30,19 @@ const {isArray} = Array;
     }]
   }
 */
-module.exports = ({forwards}) => {
+export default ({forwards}) => {
   if (!isArray(forwards)) {
     throw new Error('ExpectedArrayOfForwardsToFormatAsAccountingRecords');
   }
 
   const records = forwards.map(forward => ({
     amount: forward.fee,
-    category: categories.forwards,
+    category: harmony.categories.forwards,
     created_at: forward.created_at,
     from_id: forward.incoming_channel,
     notes: forward.tokens.toString(),
     to_id: forward.outgoing_channel,
-    type: types.income,
+    type: harmony.types.income,
   }));
 
   return {records};

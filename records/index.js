@@ -1,5 +1,5 @@
-const getAllInvoices = require('./get_all_invoices');
-const getAllPayments = require('./get_all_payments');
-const getChainTransactions = require('./get_chain_transactions');
+import getAllInvoices from './get_all_invoices.js';
+import getAllPayments from './get_all_payments.js';
+import getChainTransactions from './get_chain_transactions.js';
 
-module.exports = {getAllInvoices, getAllPayments, getChainTransactions};
+export { getAllInvoices, getAllPayments, getChainTransactions };

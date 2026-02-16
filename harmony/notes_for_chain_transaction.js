@@ -1,4 +1,4 @@
-const {isSweep} = require('goldengate');
+import { isSweep } from 'goldengate';
 
 /** Derive notes from a chain transaction
 
@@ -13,7 +13,7 @@ const {isSweep} = require('goldengate');
     notes: <Harmony Record Notes String>
   }
 */
-module.exports = args => {
+export default args => {
   const addresses = args.output_addresses.join(' ');
   const {transaction} = args;
 

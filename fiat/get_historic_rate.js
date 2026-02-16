@@ -1,10 +1,10 @@
-const asyncAuto = require('async/auto');
-const asyncRetry = require('async/retry');
-const {returnResult} = require('asyncjs-util');
+import asyncAuto from 'async/auto.js';
+import asyncRetry from 'async/retry.js';
+import { returnResult } from 'asyncjs-util';
 
-const getCoincapHistoricRate = require('./get_coincap_historic_rate');
-const getCoindeskHistoricRate = require('./get_coindesk_historic_rate');
-const getCoingeckoHistoricRate = require('./get_coingecko_historic_rate');
+import getCoincapHistoricRate from './get_coincap_historic_rate.js';
+import getCoindeskHistoricRate from './get_coindesk_historic_rate.js';
+import getCoingeckoHistoricRate from './get_coingecko_historic_rate.js';
 
 const defaultRateProvider = 'coingecko';
 const interval = retryCount => Math.random() * 5000 * Math.pow(2, retryCount);
@@ -28,7 +28,7 @@ const times = 10;
     cents: <Cents Per Token Number>
   }
 */
-module.exports = ({currency, date, fiat, provider, rates, request}, cbk) => {
+export default ({currency, date, fiat, provider, rates, request}, cbk) => {
   return new Promise((resolve, reject) => {
     return asyncAuto({
       // Check arguments

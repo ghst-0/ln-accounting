@@ -1,4 +1,4 @@
-const formattedNotes = require('./formatted_notes');
+import formattedNotes from './formatted_notes.js';
 
 const fiatDenominator = 1e8 * 100;
 const {isArray} = Array;
@@ -44,7 +44,7 @@ const {isArray} = Array;
     }]
   }
 */
-module.exports = ({currency, fiat, records}) => {
+export default ({currency, fiat, records}) => {
   if (!isArray(records)) {
     throw new Error('ExpectedArrayOfRecordsToMapToFiatRecords');
   }

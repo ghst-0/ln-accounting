@@ -1,4 +1,6 @@
-const getFiatValues = require('./get_fiat_values');
-const {rateProviders} = require('./constants');
+import getFiatValues from './get_fiat_values.js';
+import constants from './constants.json' with { type: 'json' };
 
-module.exports = {getFiatValues, rateProviders};
+const rateProviders = constants.rateProviders;
+
+export { getFiatValues, rateProviders };

@@ -1,7 +1,8 @@
-const {equal} = require('node:assert').strict;
-const test = require('node:test');
+import test from 'node:test';
+import { equal } from 'node:assert/strict';
 
-const notesForChainTx = require('./../../harmony/notes_for_chain_transaction');
+
+import notesForChainTx from './../../harmony/notes_for_chain_transaction.js';
 
 const tests = [
   {

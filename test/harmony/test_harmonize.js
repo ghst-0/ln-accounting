@@ -1,7 +1,7 @@
-const test = require('node:test');
-const {throws} = require('node:assert').strict;
+import test from 'node:test';
+import { throws } from 'node:assert/strict';
 
-const {harmonize} = require('./../../harmony');
+import { harmonize } from './../../harmony/index.js';
 
 const tests = [
   {

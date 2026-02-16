@@ -1,5 +1,5 @@
-const asyncAuto = require('async/auto');
-const {returnResult} = require('asyncjs-util');
+import asyncAuto from 'async/auto.js';
+import { returnResult } from 'asyncjs-util';
 
 const dateFromEpoch = epoch => new Date(epoch * 1e3).toISOString();
 const net = network => network === 'btctestnet' ? 'testnet/' : '';
@@ -24,7 +24,7 @@ const url = (net, id) => `https://blockstream.info/${net}api/tx/${id}`;
     output_addresses: [<Output Address String>]
   }
 */
-module.exports = ({id, network, request, vout}, cbk) => {
+export default ({id, network, request, vout}, cbk) => {
   return new Promise((resolve, reject) => {
     return asyncAuto({
       // Check argument

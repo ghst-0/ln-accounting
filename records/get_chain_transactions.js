@@ -1,15 +1,10 @@
-const asyncAuto = require('async/auto');
-const asyncMapSeries = require('async/mapSeries');
-const asyncRetry = require('async/retry');
-const {getChainTransactions} = require('ln-service');
-const {getClosedChannels} = require('ln-service');
-const {getHeight} = require('ln-service');
-const {getSweepTransactions} = require('ln-service');
-const {returnResult} = require('asyncjs-util');
-const {Transaction} = require('bitcoinjs-lib');
-
-const {getProxyTx} = require('./../esplora');
-const {getProxyVout} = require('./../esplora');
+import asyncAuto from 'async/auto.js';
+import asyncMapSeries from 'async/mapSeries.js';
+import asyncRetry from 'async/retry.js';
+import { getChainTransactions, getClosedChannels, getHeight, getSweepTransactions } from 'ln-service';
+import { returnResult } from 'asyncjs-util';
+import { Transaction } from 'bitcoinjs-lib';
+import { getProxyTx, getProxyVout } from './../esplora/index.js';
 
 const dateAsMs = date => new Date(date).getTime();
 const {fromHex} = Transaction;
@@ -47,7 +42,7 @@ const times = 15;
     }]
   }
 */
-module.exports = ({after, before, lnd, network, request}, cbk) => {
+export default ({after, before, lnd, network, request}, cbk) => {
   return new Promise((resolve, reject) => {
     return asyncAuto({
       // Check arguments

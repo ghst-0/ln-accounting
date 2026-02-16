@@ -1,9 +1,9 @@
-const asyncAuto = require('async/auto');
-const asyncMapSeries = require('async/mapSeries');
-const asyncRetry = require('async/retry');
-const {returnResult} = require('asyncjs-util');
+import asyncAuto from 'async/auto.js';
+import asyncMapSeries from 'async/mapSeries.js';
+import asyncRetry from 'async/retry.js';
+import { returnResult } from 'asyncjs-util';
 
-const getHistoricRate = require('./get_historic_rate');
+import getHistoricRate from './get_historic_rate.js';
 
 const dateFormat = 'yyyy-mm-ddThh';
 const defaultRetryCount = 10;
@@ -29,7 +29,7 @@ const interval = retryCount => 10 * Math.pow(2, retryCount);
     }]
   }
 */
-module.exports = ({currency, dates, fiat, provider, rate, request}, cbk) => {
+export default ({currency, dates, fiat, provider, rate, request}, cbk) => {
   return new Promise((resolve, reject) => {
     return asyncAuto({
       // Check arguments

@@ -1,5 +1,4 @@
-const {categories} = require('./harmony');
-const {types} = require('./harmony');
+import harmony from './harmony.json' with { type: 'json' };
 
 const from = messages => messages.find(n => n.type === '34349339');
 const hasKeySend = messages => !!messages.find(n => n.type === '5482373484');
@@ -33,7 +32,7 @@ const {isArray} = Array;
     }]
   }
 */
-module.exports = ({invoices}) => {
+export default ({invoices}) => {
   if (!isArray(invoices)) {
     throw new Error('ExpectedArrayOfInvoicesToMapToAccountingRecords');
   }
@@ -56,11 +55,11 @@ module.exports = ({invoices}) => {
 
       return {
         amount: invoice.received,
-        category: categories.invoices,
+        category: harmony.categories.invoices,
         created_at: invoice.confirmed_at,
         id: invoice.id,
         notes: `${pushTag} ${fromTag} ${description || ''}`.trim(),
-        type: types.income,
+        type: harmony.types.income,
       };
     });
 

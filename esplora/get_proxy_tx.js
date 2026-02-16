@@ -1,7 +1,7 @@
-const asyncAuto = require('async/auto');
-const {returnResult} = require('asyncjs-util');
+import asyncAuto from 'async/auto.js';
+import { returnResult } from 'asyncjs-util';
 
-const getEsploraTx = require('./get_esplora_tx');
+import getEsploraTx from './get_esplora_tx.js';
 
 const apiBlockstreamBtc = 'https://blockstream.info/api/';
 const apiBlockstreamBtcTestnet = 'https://blockstream.info/testnet/api/';
@@ -28,7 +28,7 @@ const random = arr => arr[Math.floor(Math.random() * arr.length)];
     output_addresses: [<Transaction Output Address String>]
   }
 */
-module.exports = ({id, network, request}, cbk) => {
+export default ({id, network, request}, cbk) => {
   return new Promise((resolve, reject) => {
     return asyncAuto({
       // Check arguments

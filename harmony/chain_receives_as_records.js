@@ -1,6 +1,5 @@
-const {categories} = require('./harmony');
-const notesForChainTransaction = require('./notes_for_chain_transaction');
-const {types} = require('./harmony');
+import harmony from './harmony.json' with { type: 'json' };
+import notesForChainTransaction from './notes_for_chain_transaction.js';
 
 const {isArray} = Array;
 
@@ -34,7 +33,7 @@ const {isArray} = Array;
     }]
   }
 */
-module.exports = args => {
+export default args => {
   if (!args) {
     throw new Error('ExpectedArgumentsToMapReceiveRecords');
   }
@@ -52,11 +51,11 @@ module.exports = args => {
     .filter(({id}) => !args.channel_transaction_ids.find(n => n === id))
     .map(tx => ({
       amount: tx.tokens,
-      category: categories.chain_receives,
+      category: harmony.categories.chain_receives,
       created_at: tx.created_at,
       id: tx.id,
       notes: notesForChainTransaction(tx).notes,
-      type: types.deposit,
+      type: harmony.types.deposit,
     }));
 
   return {records};

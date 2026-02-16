@@ -1,4 +1,4 @@
-const getBlockstreamTx = require('./get_blockstream_tx');
-const getBlockstreamVout = require('./get_blockstream_vout');
+import getBlockstreamTx from './get_blockstream_tx.js';
+import getBlockstreamVout from './get_blockstream_vout.js';
 
-module.exports = {getBlockstreamTx, getBlockstreamVout};
+export { getBlockstreamTx, getBlockstreamVout };

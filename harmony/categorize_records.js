@@ -1,5 +1,5 @@
-const {categories} = require('./harmony');
-const harmonize = require('./harmonize');
+import harmony from './harmony.json' with { type: 'json' };
+import harmonize from './harmonize.js';
 
 const {isArray} = Array;
 const {keys} = Object;
@@ -40,7 +40,7 @@ const {keys} = Object;
     [$category_csv]: <CSV String>
   }
 */
-module.exports = ({records}) => {
+export default ({records}) => {
   if (!isArray(records)) {
     throw new Error('ExpectedRecordsArrayToCategorize');
   }
@@ -49,7 +49,7 @@ module.exports = ({records}) => {
 
   const report = {};
 
-  keys(categories).forEach(category => {
+  keys(harmony.categories).forEach(category => {
     const categoryRecords = records.filter(n => n.category === category);
 
     report[category] = categoryRecords;

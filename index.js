@@ -1,11 +1,10 @@
-const {getAccountingReport} = require('./report');
-const {getChainTransactions} = require('./records');
-const {parseAmount} = require('./report');
-const {rateProviders} = require('./fiat');
+import { getAccountingReport, parseAmount } from './report/index.js';
+import { getChainTransactions } from './records/index.js';
+import { rateProviders } from './fiat/index.js';
 
-module.exports = {
+export {
   getAccountingReport,
   getChainTransactions,
   parseAmount,
-  rateProviders,
+  rateProviders
 };

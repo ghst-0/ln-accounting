@@ -1,7 +1,7 @@
-const {deepEqual} = require('node:assert').strict;
-const test = require('node:test');
+import { deepEqual } from 'node:assert/strict';
+import test from 'node:test';
 
-const {paymentsAsRecords} = require('./../../harmony');
+import { paymentsAsRecords } from './../../harmony/index.js';
 
 const date = new Date().toISOString();
 

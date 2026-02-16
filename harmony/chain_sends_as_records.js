@@ -1,5 +1,4 @@
-const {categories} = require('./harmony');
-const {types} = require('./harmony');
+import harmony from './harmony.json' with { type: 'json' };
 
 /** Chain sends as records
 
@@ -24,17 +23,17 @@ const {types} = require('./harmony');
     channel_transaction_ids: [<Channel Transaction Id Hex String>]
   }
 */
-module.exports = args => {
+export default args => {
   const records = args.transactions
     .filter(tx => !!tx.is_confirmed && !!tx.tokens && !!tx.is_outgoing)
     .filter(({id}) => !args.channel_transaction_ids.find(n => n === id))
     .map(tx => ({
       amount: -(tx.tokens - tx.fee),
-      category: categories.chain_sends,
+      category: harmony.categories.chain_sends,
       created_at: tx.created_at,
       id: tx.id,
       notes: `Outputs to ${tx.output_addresses.join(' ')}`,
-      type: types.withdraw,
+      type: harmony.types.withdraw,
     }));
 
   return {records};

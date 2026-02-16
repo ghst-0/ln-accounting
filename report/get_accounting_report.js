@@ -1,25 +1,21 @@
-const asyncAuto = require('async/auto');
-const asyncRetry = require('async/retry');
-const {getChannels} = require('ln-service');
-const {getClosedChannels} = require('ln-service');
-const {getForwards} = require('ln-service');
-const {getIdentity} = require('ln-service');
-const {getPendingChannels} = require('ln-service');
-const {returnResult} = require('asyncjs-util');
+import asyncAuto from 'async/auto.js';
+import asyncRetry from 'async/retry.js';
+import { getChannels, getClosedChannels, getForwards, getIdentity, getPendingChannels } from 'ln-service';
+import { returnResult } from 'asyncjs-util';
+import {
+  categories,
+  categorizeRecords,
+  chainFeesAsRecords,
+  chainReceivesAsRecords,
+  chainSendsAsRecords,
+  forwardsAsRecords,
+  invoicesAsRecords,
+  paymentsAsRecords,
+  recordsWithFiat
+} from './../harmony/index.js';
+import { getAllInvoices, getAllPayments, getChainTransactions } from './../records/index.js';
+import { getFiatValues } from './../fiat/index.js';
 
-const {categories} = require('./../harmony');
-const {categorizeRecords} = require('./../harmony');
-const {chainFeesAsRecords} = require('./../harmony');
-const {chainReceivesAsRecords} = require('./../harmony');
-const {chainSendsAsRecords} = require('./../harmony');
-const {forwardsAsRecords} = require('./../harmony');
-const {getAllInvoices} = require('./../records');
-const {getAllPayments} = require('./../records');
-const {getChainTransactions} = require('./../records');
-const {getFiatValues} = require('./../fiat');
-const {invoicesAsRecords} = require('./../harmony');
-const {paymentsAsRecords} = require('./../harmony');
-const {recordsWithFiat} = require('./../harmony');
 
 const earlyStartDate = '2017-08-24T08:57:37.000Z';
 const interval = retryCount => Math.random() * 5000 * Math.pow(2, retryCount);
@@ -107,7 +103,7 @@ const times = 10;
     [payments_csv]: <CSV String>
   }
 */
-module.exports = (args, cbk) => {
+export default (args, cbk) => {
   return new Promise((resolve, reject) => {
     return asyncAuto({
       // Check arguments

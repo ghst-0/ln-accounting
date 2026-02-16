@@ -1,4 +1,4 @@
-const getAccountingReport = require('./get_accounting_report');
-const parseAmount = require('./parse_amount');
+import getAccountingReport from './get_accounting_report.js';
+import parseAmount from './parse_amount.js';
 
-module.exports = {getAccountingReport, parseAmount};
+export { getAccountingReport, parseAmount };

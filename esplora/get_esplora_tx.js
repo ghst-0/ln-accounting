@@ -1,5 +1,5 @@
-const asyncAuto = require('async/auto');
-const {returnResult} = require('asyncjs-util');
+import asyncAuto from 'async/auto.js';
+import { returnResult } from 'asyncjs-util';
 
 const dateFromEpoch = epoch => new Date(epoch * 1e3).toISOString();
 const {isArray} = Array;
@@ -22,7 +22,7 @@ const url = (api, id) => `${api}tx/${id}`;
     output_addresses: [<Output Address String>]
   }
 */
-module.exports = ({api, id, request}, cbk) => {
+export default ({api, id, request}, cbk) => {
   return new Promise((resolve, reject) => {
     return asyncAuto({
       // Check argument
