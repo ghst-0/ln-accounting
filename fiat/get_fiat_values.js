@@ -31,7 +31,7 @@ const interval = retryCount => 10 * Math.pow(2, retryCount);
 */
 export default ({currency, dates, fiat, provider, rate, request}, cbk) => {
   return new Promise((resolve, reject) => {
-    return asyncAuto({
+    asyncAuto({
       // Check arguments
       validate: cbk => {
         if (!currency) {

@@ -19,7 +19,7 @@ const url = (api, id) => `${api}tx/${id}`;
 */
 export default ({api, id, request, vout}, cbk) => {
   return new Promise((resolve, reject) => {
-    return asyncAuto({
+    asyncAuto({
       // Check argument
       validate: cbk => {
         if (!api) {

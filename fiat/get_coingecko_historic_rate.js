@@ -25,7 +25,7 @@ const url = 'https://api.coingecko.com/api/v3/coins/bitcoin/history';
 */
 export default ({currency, date, fiat, rates, request}, cbk) => {
   return new Promise((resolve, reject) => {
-    return asyncAuto({
+    asyncAuto({
       // Check arguments
       validate: cbk => {
         if (currency !== 'BTC') {

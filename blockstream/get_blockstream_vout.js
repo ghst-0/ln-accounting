@@ -22,7 +22,7 @@ const url = (net, id) => `https://blockstream.info/${net}api/tx/${id}`;
 */
 export default ({id, network, request, vout}, cbk) => {
   return new Promise((resolve, reject) => {
-    return asyncAuto({
+    asyncAuto({
       // Check argument
       validate: cbk => {
         if (!id) {

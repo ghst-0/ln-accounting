@@ -25,7 +25,7 @@ const random = arr => arr[Math.floor(Math.random() * arr.length)];
 */
 export default ({id, network, request, vout}, cbk) => {
   return new Promise((resolve, reject) => {
-    return asyncAuto({
+    asyncAuto({
       // Check arguments
       validate: cbk => {
         if (!id) {

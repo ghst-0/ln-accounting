@@ -29,7 +29,7 @@ const {round} = Math;
 */
 export default ({currency, date, fiat, request}, cbk) => {
   return new Promise((resolve, reject) => {
-    return asyncAuto({
+    asyncAuto({
       // Check arguments
       validate: cbk => {
         if (!assets[currency]) {

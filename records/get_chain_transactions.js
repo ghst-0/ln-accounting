@@ -44,7 +44,7 @@ const times = 15;
 */
 export default ({after, before, lnd, network, request}, cbk) => {
   return new Promise((resolve, reject) => {
-    return asyncAuto({
+    asyncAuto({
       // Check arguments
       validate: cbk => {
         if (!lnd) {
