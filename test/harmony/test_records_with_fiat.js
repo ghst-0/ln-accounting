@@ -96,16 +96,16 @@ const tests = [
   },
 ];
 
-tests.forEach(({args, description, error, expected}) => {
-  return test(description, (t, end) => {
+for (const { args, description, error, expected } of tests) {
+  test(description, (t, end) => {
     if (error) {
       throws(() => recordsWithFiat(args), new Error(error), 'Got error');
     } else {
-      const {records} = recordsWithFiat(args);
+      const { records } = recordsWithFiat(args);
 
       deepEqual(records, expected.records, 'Fiat added to records');
     }
 
     return end();
-  });
-});
+  })
+}

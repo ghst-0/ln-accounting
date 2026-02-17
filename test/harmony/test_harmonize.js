@@ -11,8 +11,8 @@ const tests = [
   },
 ];
 
-tests.forEach(({args, description, error}) => {
-  return test(description, (t, end) => {
+for (const { args, description, error } of tests) {
+  test(description, (t, end) => {
     if (error) {
       throws(() => harmonize(args), new Error(error), 'Got error');
     } else {
@@ -20,5 +20,5 @@ tests.forEach(({args, description, error}) => {
     }
 
     return end();
-  });
-});
+  })
+}

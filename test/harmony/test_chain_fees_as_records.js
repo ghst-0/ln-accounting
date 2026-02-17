@@ -29,12 +29,12 @@ const tests = [
   },
 ];
 
-tests.forEach(({args, description, expected}) => {
-  return test(description, (t, end) => {
-    const {records} = chainFeesAsRecords(args);
+for (const { args, description, expected } of tests) {
+  test(description, (t, end) => {
+    const { records } = chainFeesAsRecords(args);
 
     deepEqual(records, expected.records, 'Fees formatted as records');
 
     return end();
-  });
-});
+  })
+}

@@ -3,7 +3,7 @@ import { returnResult } from 'asyncjs-util';
 
 const net = network => network === 'btctestnet' ? 'testnet/' : '';
 const {isArray} = Array;
-const supportedNetworks = ['btc', 'btctestnet'];
+const supportedNetworks = new Set(['btc', 'btctestnet']);
 const url = (net, id) => `https://blockstream.info/${net}api/tx/${id}`;
 
 /** Get tx vout details from Blockstream
@@ -29,7 +29,7 @@ export default ({id, network, request, vout}, cbk) => {
           return cbk([400, 'ExpectedTransactionIdToGetBlockstreamVout']);
         }
 
-        if (!!network && !supportedNetworks.includes(network)) {
+        if (!!network && !supportedNetworks.has(network)) {
           return cbk([400, 'UnsupportedNetworkToGetBlockstreamVout']);
         }
 

@@ -8,7 +8,7 @@ import getHistoricRate from './get_historic_rate.js';
 const dateFormat = 'yyyy-mm-ddThh';
 const defaultRetryCount = 10;
 const {isArray} = Array;
-const interval = retryCount => 10 * Math.pow(2, retryCount);
+const interval = retryCount => 10 * 2 ** retryCount;
 
 /** Get fiat values
 
@@ -58,16 +58,16 @@ export default ({currency, dates, fiat, provider, rate, request}, cbk) => {
         const rates = {};
 
         return asyncMapSeries(dates, (date, cbk) => {
-          const roughDate = date.substring(Number(), dateFormat.length);
+          const roughDate = date.slice(Number(), dateFormat.length);
 
           // Exit early when the fiat value has already been found
           if (rates[roughDate]) {
             return cbk(null, {date, cents: rates[roughDate]});
           }
 
-          const times = !rate ? defaultRetryCount : Number()
+          const times = rate ? Number() : defaultRetryCount
 
-          return asyncRetry({interval, times}, cbk => {
+            return asyncRetry({interval, times}, cbk => {
             return (rate || getHistoricRate)({
               currency,
               date,

@@ -28,10 +28,10 @@ export default ({amount, variables}) => {
 
   const parser = new Parser();
 
-  keys(variables || {}).forEach(key => {
+  for (const key of keys(variables || {})) {
     parser.setVariable(key.toLowerCase(), variables[key]);
     parser.setVariable(key.toUpperCase(), variables[key]);
-  });
+  }
 
   parser.setVariable('BTC', 1e8);
   parser.setVariable('btc', 1e8);

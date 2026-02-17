@@ -4,7 +4,7 @@ import { returnResult } from 'asyncjs-util';
 const dateFromEpoch = epoch => new Date(epoch * 1e3).toISOString();
 const net = network => network === 'btctestnet' ? 'testnet/' : '';
 const {isArray} = Array;
-const supportedNetworks = ['btc', 'btctestnet'];
+const supportedNetworks = new Set(['btc', 'btctestnet']);
 const url = (net, id) => `https://blockstream.info/${net}api/tx/${id}`;
 
 /** Get transaction details from Blockstream
@@ -33,7 +33,7 @@ export default ({id, network, request, vout}, cbk) => {
           return cbk([400, 'ExpectedTransactionIdToGetBlockstreamTxFee']);
         }
 
-        if (!!network && !supportedNetworks.includes(network)) {
+        if (!!network && !supportedNetworks.has(network)) {
           return cbk([400, 'UnsupportedNetworkToGetBlockstreamTxFee']);
         }
 

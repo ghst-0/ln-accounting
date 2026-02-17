@@ -61,16 +61,16 @@ const tests = [
   }
 ];
 
-tests.forEach(({args, description, error, expected}) => {
-  return test(description, (t, end) => {
+for (const { args, description, error, expected } of tests) {
+  test(description, (t, end) => {
     if (error) {
       throws(() => invoicesAsRecords(args), new Error(error), 'Got error');
     } else {
-      const {records} = invoicesAsRecords(args);
+      const { records } = invoicesAsRecords(args);
 
       deepEqual(records, expected.records, 'Forwards formatted as records');
     }
 
     return end();
-  });
-});
+  })
+}

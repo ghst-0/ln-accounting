@@ -81,7 +81,7 @@ export default ({after, before, lnd}, cbk) => {
               lnd,
               token,
               created_after: createdAfter,
-              limit: !token ? limit : undefined,
+              limit: token ? undefined : limit,
             },
             (err, res) => {
               if (err) {

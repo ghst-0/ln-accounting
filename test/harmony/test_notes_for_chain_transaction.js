@@ -33,12 +33,12 @@ const tests = [
   },
 ];
 
-tests.forEach(({args, description, expected}) => {
-  return test(description, (t, end) => {
-    const {notes} = notesForChainTx(args);
+for (const { args, description, expected } of tests) {
+  test(description, (t, end) => {
+    const { notes } = notesForChainTx(args);
 
     equal(notes, expected.notes, 'Notes for chain transaction');
 
     return end();
-  });
-});
+  })
+}

@@ -57,16 +57,16 @@ const tests = [
   },
 ];
 
-tests.forEach(({args, description, error, expected}) => {
-  return test(description, (t, end) => {
+for (const { args, description, error, expected } of tests) {
+  test(description, (t, end) => {
     if (error) {
       throws(() => chainReceivesAsRecords(args), new Error(error), 'Got err');
     } else {
-      const {records} = chainReceivesAsRecords(args);
+      const { records } = chainReceivesAsRecords(args);
 
       deepEqual(records, expected.records, 'Fees formatted as records');
     }
 
     return end();
-  });
-});
+  })
+}

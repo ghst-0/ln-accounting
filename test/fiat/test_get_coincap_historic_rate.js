@@ -70,14 +70,14 @@ const tests = [
   },
 ];
 
-tests.forEach(({args, description, error, expected}) => {
-  return test(description, async () => {
+for (const { args, description, error, expected } of tests) {
+  test(description, async () => {
     if (error) {
       await rejects(method(args), error, 'Got expected error');
     } else {
-      const {cents} = await method(args);
+      const { cents } = await method(args);
 
       equal(cents, expected.cents, 'Cents returned');
     }
-  });
-});
+  })
+}

@@ -18,7 +18,7 @@ import { getFiatValues } from './../fiat/index.js';
 
 
 const earlyStartDate = '2017-08-24T08:57:37.000Z';
-const interval = retryCount => Math.random() * 5000 * Math.pow(2, retryCount);
+const interval = retryCount => Math.random() * 5000 * 2 ** retryCount;
 const largeLimit = 1e8;
 const times = 10;
 

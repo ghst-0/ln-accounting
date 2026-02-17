@@ -49,12 +49,12 @@ export default ({records}) => {
 
   const report = {};
 
-  keys(harmony.categories).forEach(category => {
+  for (const category of keys(harmony.categories)) {
     const categoryRecords = records.filter(n => n.category === category);
 
     report[category] = categoryRecords;
     report[`${category}_csv`] = harmonize({records: categoryRecords}).csv;
-  });
+  }
 
   return report;
 };

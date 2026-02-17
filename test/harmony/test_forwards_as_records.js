@@ -36,16 +36,16 @@ const tests = [
   },
 ];
 
-tests.forEach(({args, description, error, expected}) => {
-  return test(description, (t, end) => {
+for (const { args, description, error, expected } of tests) {
+  test(description, (t, end) => {
     if (error) {
       throws(() => forwardsAsRecords(args), new Error(error), 'Got error');
     } else {
-      const {records} = forwardsAsRecords(args);
+      const { records } = forwardsAsRecords(args);
 
       deepEqual(records, expected.records, 'Forwards formatted as records');
     }
 
     return end();
-  });
-});
+  })
+}

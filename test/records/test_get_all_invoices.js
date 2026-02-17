@@ -89,14 +89,14 @@ const tests = [
   },
 ];
 
-tests.forEach(({args, description, error, expected}) => {
-  return test(description, async () => {
+for (const { args, description, error, expected } of tests) {
+  test(description, async () => {
     if (error) {
       await rejects(getAllInvoices(args), error, 'Got expected error');
     } else {
-      const {invoices} = await getAllInvoices(args);
+      const { invoices } = await getAllInvoices(args);
 
       deepEqual(invoices, expected.invoices, 'Got expected result');
     }
-  });
-});
+  })
+}

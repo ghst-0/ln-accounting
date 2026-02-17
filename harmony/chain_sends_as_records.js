@@ -26,7 +26,7 @@ import harmony from './harmony.json' with { type: 'json' };
 export default args => {
   const records = args.transactions
     .filter(tx => !!tx.is_confirmed && !!tx.tokens && !!tx.is_outgoing)
-    .filter(({id}) => !args.channel_transaction_ids.find(n => n === id))
+    .filter(({id}) => !args.channel_transaction_ids.some(n => n === id))
     .map(tx => ({
       amount: -(tx.tokens - tx.fee),
       category: harmony.categories.chain_sends,

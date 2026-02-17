@@ -3,7 +3,7 @@ import { returnResult } from 'asyncjs-util';
 
 const asCoingeckoDate = yyyymmdd => yyyymmdd.split('-').reverse().join('-');
 const centsPerDollar = 100;
-const dateComponents = date => date.substring(0, 'yyyy-mm-dd'.length);
+const dateComponents = date => date.slice(0, 'yyyy-mm-dd'.length);
 const {keys} = Object;
 const remoteServiceTimeoutMs = 30 * 1000;
 const url = 'https://api.coingecko.com/api/v3/coins/bitcoin/history';

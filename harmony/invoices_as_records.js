@@ -1,7 +1,7 @@
 import harmony from './harmony.json' with { type: 'json' };
 
 const from = messages => messages.find(n => n.type === '34349339');
-const hasKeySend = messages => !!messages.find(n => n.type === '5482373484');
+const hasKeySend = messages => !!messages.some(n => n.type === '5482373484');
 const {isArray} = Array;
 
 /** Invoices as accounting records
@@ -41,17 +41,17 @@ export default ({invoices}) => {
   const records = invoices
     .filter(n => !!n.confirmed_at && !!n.is_confirmed && !!n.received)
     .map(invoice => {
-      const description = invoice.description.replace(/,/gim, ' ');
+      const description = invoice.description.replaceAll(',', ' ');
 
       const {payments} = invoice;
 
       const [payment] = payments;
 
       const fromKey = payment ? from(payment.messages) : null;
-      const isKeySend = !payment ? false : !!hasKeySend(payment.messages);
+      const isKeySend = payment ? !!hasKeySend(payment.messages) : false;
 
       const fromTag = fromKey ? `Marked from ${fromKey.value}` : '';
-      const pushTag = !isKeySend ? '' : '[Push Payment]';
+      const pushTag = isKeySend ? '[Push Payment]' : '';
 
       return {
         amount: invoice.received,

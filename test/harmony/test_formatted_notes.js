@@ -16,16 +16,16 @@ const tests = [
   },
 ];
 
-tests.forEach(({args, description, error, expected}) => {
-  return test(description, (t, end) => {
+for (const { args, description, error, expected } of tests) {
+  test(description, (t, end) => {
     if (error) {
       throws(() => formattedNotes(args), new Error(error), 'Got error');
     } else {
-      const {notes} = formattedNotes(args);
+      const { notes } = formattedNotes(args);
 
       equal(notes, expected.notes, 'Got formatted notes');
     }
 
     return end();
-  });
-});
+  })
+}

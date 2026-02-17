@@ -105,7 +105,7 @@ export default ({after, lnd}, cbk) => {
         return asyncUntil(
           cbk => cbk(null, token === false),
           cbk => {
-            const limit = !token ? paymentsPagingLimit : undefined;
+            const limit = token ? undefined : paymentsPagingLimit;
 
             return getPayments({limit, lnd, token}, (err, res) => {
               if (err) {
@@ -129,9 +129,9 @@ export default ({after, lnd}, cbk) => {
               }
 
               // Push payments within the date range into the found records
-              withinDateRange
-                .filter(n => n.is_confirmed)
-                .forEach(n => payments.push(n));
+              for (const n1 of withinDateRange.filter(n => n.is_confirmed)) {
+                payments.push(n1)
+              }
 
               return cbk();
             });

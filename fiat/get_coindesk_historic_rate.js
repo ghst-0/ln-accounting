@@ -49,10 +49,10 @@ export default ({currency, date, fiat, request}, cbk) => {
 
       // Get rate
       getRate: ['validate', ({}, cbk) => {
-        const roughDate = date.substring(0, dayFormat.length);
+        const roughDate = date.slice(0, dayFormat.length);
         const start = new Date(parse(date) - msPerDay).toISOString();
 
-        const startDay = start.substring(0, dayFormat.length);
+        const startDay = start.slice(0, dayFormat.length);
 
         return request({
           json: true,

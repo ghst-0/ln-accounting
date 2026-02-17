@@ -48,7 +48,7 @@ export default args => {
 
   const records = args.transactions
     .filter(tx => !!tx.is_confirmed && !!tx.tokens && !tx.is_outgoing)
-    .filter(({id}) => !args.channel_transaction_ids.find(n => n === id))
+    .filter(({id}) => !args.channel_transaction_ids.some(n => n === id))
     .map(tx => ({
       amount: tx.tokens,
       category: harmony.categories.chain_receives,

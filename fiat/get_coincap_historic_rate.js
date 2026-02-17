@@ -68,7 +68,7 @@ export default ({currency, date, fiat, request}, cbk) => {
             return cbk([503, 'UnexpectedErrorGettingCoincapRate', {err}]);
           }
 
-          if (!body || !isArray(body.data) || !body.data.length) {
+          if (!body || !isArray(body.data) || body.data.length === 0) {
             return cbk([503, 'UnexpectedResponseGettingCoincapRate']);
           }
 
@@ -84,7 +84,7 @@ export default ({currency, date, fiat, request}, cbk) => {
             return cbk([503, 'ExpectedFiatPriceInCoincapResponse']);
           }
 
-          const cents = round(parseFloat(rate, decBase) * centsPerDollar);
+          const cents = round(Number.parseFloat(rate, decBase) * centsPerDollar);
 
           return cbk(null, {cents});
         });

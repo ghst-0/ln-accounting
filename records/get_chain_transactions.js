@@ -196,10 +196,10 @@ export default ({after, before, lnd, network, request}, cbk) => {
             const inputs = fromHex(tx.transaction).ins;
 
             // Confirm that the inputs to the tx are local
-            return !!inputs.find(({hash, index}) => {
+            return !!inputs.some(({hash, index}) => {
               const id = hash.slice().reverse().toString('hex');
 
-              return !getTx.transactions.find(n => n.id === id);
+              return !getTx.transactions.some(n => n.id === id);
             });
           })();
 
@@ -274,11 +274,11 @@ export default ({after, before, lnd, network, request}, cbk) => {
         'getTx',
         ({getClosed, getClosingFees, getSweepFees, getTx}, cbk) =>
       {
-        const closeIds = getClosed.channels.map(n => n.close_transaction_id);
-        const sweeps = getSweepFees.map(({id}) => id);
+        const closeIds = new Set(getClosed.channels.map(n => n.close_transaction_id));
+        const sweeps = new Set(getSweepFees.map(({id}) => id));
 
         const normalTx = getTx.transactions.filter(({id}) => {
-          return !closeIds.includes(id) && !sweeps.includes(id);
+          return !closeIds.has(id) && !sweeps.has(id);
         });
 
         const transactions = []

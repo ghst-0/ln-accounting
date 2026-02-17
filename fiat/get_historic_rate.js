@@ -7,7 +7,7 @@ import getCoindeskHistoricRate from './get_coindesk_historic_rate.js';
 import getCoingeckoHistoricRate from './get_coingecko_historic_rate.js';
 
 const defaultRateProvider = 'coingecko';
-const interval = retryCount => Math.random() * 5000 * Math.pow(2, retryCount);
+const interval = retryCount => Math.random() * 5000 * 2 ** retryCount;
 const times = 10;
 
 /** Get historic rate

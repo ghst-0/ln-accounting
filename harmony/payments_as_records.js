@@ -41,7 +41,7 @@ export default args => {
     let parsed;
 
     try {
-      parsed = !request ? null : parsePaymentRequest({request});
+      parsed = request ? parsePaymentRequest({ request }) : null;
     } catch {
       // Ignore payment requests that cannot be parsed
       parsed = null;
