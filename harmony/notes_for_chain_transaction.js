@@ -1,5 +1,3 @@
-import { isSweep } from 'goldengate';
-
 /** Derive notes from a chain transaction
 
   {
@@ -15,17 +13,6 @@ import { isSweep } from 'goldengate';
 */
 export default args => {
   const addresses = args.output_addresses.join(' ');
-  const {transaction} = args;
-
-  const sweep = args.transaction ? isSweep({ transaction }) : {};
-
-  if (sweep.is_success_sweep) {
-    return {notes: `Submarine swap success, swept out to ${addresses}`};
-  }
-
-  if (sweep.is_timeout_sweep) {
-    return {notes: `Submarine swap failure, swept out to ${addresses}`};
-  }
 
   if (!args.description) {
     return {notes: `Outputs to ${addresses}`};
