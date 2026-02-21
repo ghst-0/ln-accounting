@@ -1,7 +1,7 @@
 import test from 'node:test';
 import { deepEqual, rejects } from 'node:assert/strict';
 
-import method from './../../blockstream/get_blockstream_tx.js';
+import method from '../../blockstream/get_blockstream_tx.js';
 
 const makeArgs = overrides => {
   const args = {

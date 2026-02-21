@@ -1,7 +1,7 @@
 import test from 'node:test';
-import { deepEqual, rejects } from 'node:assert';
+import { deepEqual, rejects } from 'node:assert/strict';
 
-import { getFiatValues } from './../../fiat/index.js';
+import { getFiatValues } from '../../fiat/index.js';
 
 const date = new Date().toISOString();
 

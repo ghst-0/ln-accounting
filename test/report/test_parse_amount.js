@@ -1,7 +1,7 @@
 import test from 'node:test';
 import { equal, throws } from 'node:assert/strict';
 
-import { parseAmount } from './../../index.js';
+import { parseAmount } from '../../index.js';
 
 const tests = [
   {

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import { equal, rejects } from 'node:assert/strict';
 
-import getHistoricRate from './../../fiat/get_historic_rate.js';
+import getHistoricRate from '../../fiat/get_historic_rate.js';
 
 const api = ({}, cbk) => {
   return cbk(null, null, {market_data: {current_price: {usd: 12.34}}});

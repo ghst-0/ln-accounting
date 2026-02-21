@@ -1,7 +1,7 @@
 import test from 'node:test';
 import { deepEqual, equal, throws } from 'node:assert/strict';
 
-import { categorizeRecords } from './../../harmony/index.js';
+import { categorizeRecords } from '../../harmony/index.js';
 
 const tests = [
   {

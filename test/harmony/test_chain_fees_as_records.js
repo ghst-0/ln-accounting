@@ -1,7 +1,7 @@
 import test from 'node:test';
 import { deepEqual } from 'node:assert/strict';
 
-import { chainFeesAsRecords } from './../../harmony/index.js';
+import { chainFeesAsRecords } from '../../harmony/index.js';
 
 const date = new Date().toISOString();
 

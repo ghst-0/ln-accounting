@@ -2,7 +2,7 @@ import test from 'node:test';
 import { equal } from 'node:assert/strict';
 
 
-import notesForChainTx from './../../harmony/notes_for_chain_transaction.js';
+import notesForChainTx from '../../harmony/notes_for_chain_transaction.js';
 
 const tests = [
   {

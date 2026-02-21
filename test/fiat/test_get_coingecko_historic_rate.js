@@ -1,7 +1,7 @@
 import test from 'node:test';
 import { deepEqual, rejects } from 'node:assert/strict';
 
-import method from './../../fiat/get_coingecko_historic_rate.js';
+import method from '../../fiat/get_coingecko_historic_rate.js';
 
 const makeArgs = overrides => {
   const args = {

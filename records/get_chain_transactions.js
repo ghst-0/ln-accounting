@@ -4,7 +4,7 @@ import asyncRetry from 'async/retry.js';
 import { getChainTransactions, getClosedChannels, getHeight, getSweepTransactions } from 'ln-service';
 import { returnResult } from 'asyncjs-util';
 import { Transaction } from 'bitcoinjs-lib';
-import { getProxyTx, getProxyVout } from './../esplora/index.js';
+import { getProxyTx, getProxyVout } from '../esplora/index.js';
 
 const dateAsMs = date => new Date(date).getTime();
 const {fromHex} = Transaction;

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import { equal,  rejects } from 'node:assert/strict';
 
-import method from './../../fiat/get_coincap_historic_rate.js';
+import method from '../../fiat/get_coincap_historic_rate.js';
 
 const date = new Date().toISOString();
 

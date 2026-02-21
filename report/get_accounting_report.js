@@ -12,9 +12,9 @@ import {
   invoicesAsRecords,
   paymentsAsRecords,
   recordsWithFiat
-} from './../harmony/index.js';
-import { getAllInvoices, getAllPayments, getChainTransactions } from './../records/index.js';
-import { getFiatValues } from './../fiat/index.js';
+} from '../harmony/index.js';
+import { getAllInvoices, getAllPayments, getChainTransactions } from '../records/index.js';
+import { getFiatValues } from '../fiat/index.js';
 
 
 const earlyStartDate = '2017-08-24T08:57:37.000Z';

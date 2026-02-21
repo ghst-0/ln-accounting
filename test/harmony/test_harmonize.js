@@ -1,7 +1,7 @@
 import test from 'node:test';
 import { throws } from 'node:assert/strict';
 
-import { harmonize } from './../../harmony/index.js';
+import { harmonize } from '../../harmony/index.js';
 
 const tests = [
   {
