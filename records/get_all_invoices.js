@@ -59,7 +59,7 @@ export default ({after, before, lnd}, cbk) => {
       // Adjust after date to allow for date slippage
       createdAfter: ['validate', ({}, cbk) => {
         if (!after) {
-          return cbk(null, undefined);
+          return cbk(null);
         }
 
         // Adjust the after date to make sure no records are being left out
@@ -90,7 +90,7 @@ export default ({after, before, lnd}, cbk) => {
 
               token = res.next || false;
 
-              res.invoices
+              for (const invoice1 of res.invoices
                 .filter(n => !!n.confirmed_at && !!n.is_confirmed)
                 .filter(invoice => {
                   if (!!after && invoice.confirmed_at <= after) {
@@ -102,8 +102,9 @@ export default ({after, before, lnd}, cbk) => {
                   }
 
                   return true;
-                })
-                .forEach(invoice => invoices.push(invoice));
+                })) {
+                invoices.push(invoice1)
+              }
 
               return cbk(null, invoices);
             });
