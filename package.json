@@ -10,10 +10,10 @@
   "dependencies": {
     "@json2csv/plainjs": "7.0.6",
     "async": "3.2.6",
-    "asyncjs-util": "workspace*",
+    "asyncjs-util": "workspace:asyncjs-util",
     "bitcoinjs-lib": "6.1.7",
     "hot-formula-parser": "4.0.0",
-    "ln-service": "workspace:*"
+    "ln-service": "workspace:ln-service"
   },
   "devDependencies": {
     "oxlint": "^1.50.0"
