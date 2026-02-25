@@ -23,7 +23,7 @@ const url = 'https://api.coingecko.com/api/v3/coins/bitcoin/history';
     cents: <Cents Per Token Number>
   }
 */
-export default ({currency, date, fiat, rates, request}, cbk) => {
+const getCoingeckoHistoricRate = ({currency, date, fiat, rates, request}, cbk) => {
   return new Promise((resolve, reject) => {
     asyncAuto({
       // Check arguments
@@ -94,3 +94,5 @@ export default ({currency, date, fiat, rates, request}, cbk) => {
     returnResult({reject, resolve, of: 'getRate'}, cbk));
   });
 };
+
+export { getCoingeckoHistoricRate }

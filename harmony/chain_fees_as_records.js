@@ -27,7 +27,7 @@ import harmony from './harmony.json' with { type: 'json' };
     }]
   }
 */
-export default ({transactions}) => {
+const chainFeesAsRecords = ({transactions}) => {
   const records = transactions
     .filter(tx => !!tx.fee && !!tx.is_outgoing)
     .map(tx => ({
@@ -41,3 +41,5 @@ export default ({transactions}) => {
 
   return {records};
 };
+
+export { chainFeesAsRecords }

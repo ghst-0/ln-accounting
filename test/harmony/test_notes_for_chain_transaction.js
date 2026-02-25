@@ -1,8 +1,7 @@
 import test from 'node:test';
 import { equal } from 'node:assert/strict';
 
-
-import notesForChainTx from '../../harmony/notes_for_chain_transaction.js';
+import { notesForChainTransaction } from '../../harmony/notes_for_chain_transaction.js';
 
 const tests = [
   {
@@ -35,7 +34,7 @@ const tests = [
 
 for (const { args, description, expected } of tests) {
   test(description, (t, end) => {
-    const { notes } = notesForChainTx(args);
+    const { notes } = notesForChainTransaction(args);
 
     equal(notes, expected.notes, 'Notes for chain transaction');
 

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import { deepEqual, rejects } from 'node:assert/strict';
 
-import method from '../../fiat/get_coingecko_historic_rate.js';
+import { getCoingeckoHistoricRate } from '../../fiat/get_coingecko_historic_rate.js';
 
 const makeArgs = overrides => {
   const args = {
@@ -78,9 +78,9 @@ const tests = [
 for (const { args, description, error, expected } of tests) {
   test(description, async () => {
     if (error) {
-      await rejects(method(args), error, 'Got expected error');
+      await rejects(getCoingeckoHistoricRate(args), error, 'Got expected error');
     } else {
-      const res = await method(args);
+      const res = await getCoingeckoHistoricRate(args);
 
       deepEqual(res, expected, 'Got expected return value');
     }

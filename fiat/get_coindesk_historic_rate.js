@@ -23,7 +23,7 @@ const remoteServiceTimeoutMs = 30 * 1000;
     cents: <Cents Per Token Number>
   }
 */
-export default ({currency, date, fiat, request}, cbk) => {
+const getCoindeskHistoricRate = ({currency, date, fiat, request}, cbk) => {
   return new Promise((resolve, reject) => {
     asyncAuto({
       // Check arguments
@@ -78,3 +78,5 @@ export default ({currency, date, fiat, request}, cbk) => {
     returnResult({reject, resolve, of: 'getRate'}, cbk));
   });
 };
+
+export { getCoindeskHistoricRate }

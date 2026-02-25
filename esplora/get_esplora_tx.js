@@ -22,7 +22,7 @@ const url = (api, id) => `${api}tx/${id}`;
     output_addresses: [<Output Address String>]
   }
 */
-export default ({api, id, request}, cbk) => {
+const getEsploraTx = ({api, id, request}, cbk) => {
   return new Promise((resolve, reject) => {
     asyncAuto({
       // Check argument
@@ -86,3 +86,5 @@ export default ({api, id, request}, cbk) => {
     returnResult({reject, resolve, of: 'getDetails'}, cbk));
   });
 };
+
+export { getEsploraTx }

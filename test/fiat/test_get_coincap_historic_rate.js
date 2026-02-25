@@ -1,7 +1,7 @@
 import test from 'node:test';
 import { equal,  rejects } from 'node:assert/strict';
 
-import method from '../../fiat/get_coincap_historic_rate.js';
+import { getCoincapHistoricRate } from '../../fiat/get_coincap_historic_rate.js';
 
 const date = new Date().toISOString();
 
@@ -73,9 +73,9 @@ const tests = [
 for (const { args, description, error, expected } of tests) {
   test(description, async () => {
     if (error) {
-      await rejects(method(args), error, 'Got expected error');
+      await rejects(getCoincapHistoricRate(args), error, 'Got expected error');
     } else {
-      const { cents } = await method(args);
+      const { cents } = await getCoincapHistoricRate(args);
 
       equal(cents, expected.cents, 'Cents returned');
     }

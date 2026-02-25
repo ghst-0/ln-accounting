@@ -24,7 +24,7 @@ const url = (net, id) => `https://blockstream.info/${net}api/tx/${id}`;
     output_addresses: [<Output Address String>]
   }
 */
-export default ({id, network, request, vout}, cbk) => {
+const getBlockstreamTx = ({id, network, request, vout}, cbk) => {
   return new Promise((resolve, reject) => {
     asyncAuto({
       // Check argument
@@ -92,3 +92,5 @@ export default ({id, network, request, vout}, cbk) => {
     returnResult({reject, resolve, of: 'getDetails'}, cbk));
   });
 };
+
+export { getBlockstreamTx }

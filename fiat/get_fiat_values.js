@@ -3,7 +3,7 @@ import asyncMapSeries from 'async/mapSeries.js';
 import asyncRetry from 'async/retry.js';
 import { returnResult } from 'asyncjs-util';
 
-import getHistoricRate from './get_historic_rate.js';
+import { getHistoricRate } from './get_historic_rate.js';
 
 const dateFormat = 'yyyy-mm-ddThh';
 const defaultRetryCount = 10;
@@ -29,7 +29,7 @@ const interval = retryCount => 10 * 2 ** retryCount;
     }]
   }
 */
-export default ({currency, dates, fiat, provider, rate, request}, cbk) => {
+const getFiatValues = ({currency, dates, fiat, provider, rate, request}, cbk) => {
   return new Promise((resolve, reject) => {
     asyncAuto({
       // Check arguments
@@ -100,3 +100,5 @@ export default ({currency, dates, fiat, provider, rate, request}, cbk) => {
     returnResult({reject, resolve, of: 'getRates'}, cbk));
   });
 };
+
+export { getFiatValues }

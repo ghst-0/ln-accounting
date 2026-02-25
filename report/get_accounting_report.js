@@ -2,20 +2,22 @@ import asyncAuto from 'async/auto.js';
 import asyncRetry from 'async/retry.js';
 import { getChannels, getClosedChannels, getForwards, getIdentity, getPendingChannels } from 'ln-service';
 import { returnResult } from 'asyncjs-util';
-import {
-  categories,
-  categorizeRecords,
-  chainFeesAsRecords,
-  chainReceivesAsRecords,
-  chainSendsAsRecords,
-  forwardsAsRecords,
-  invoicesAsRecords,
-  paymentsAsRecords,
-  recordsWithFiat
-} from '../harmony/index.js';
-import { getAllInvoices, getAllPayments, getChainTransactions } from '../records/index.js';
-import { getFiatValues } from '../fiat/index.js';
 
+import { categorizeRecords } from '../harmony/categorize_records.js';
+import { chainFeesAsRecords } from '../harmony/chain_fees_as_records.js';
+import { chainReceivesAsRecords } from '../harmony/chain_receives_as_records.js';
+import { chainSendsAsRecords } from '../harmony/chain_sends_as_records.js';
+import { forwardsAsRecords } from '../harmony/forwards_as_records.js';
+import { invoicesAsRecords } from '../harmony/invoices_as_records.js';
+import { paymentsAsRecords } from '../harmony/payments_as_records.js';
+import { recordsWithFiat } from '../harmony/records_with_fiat.js';
+import { getAllInvoices } from '../records/get_all_invoices.js';
+import { getAllPayments} from '../records/get_all_payments.js';
+import { getChainTransactions } from '../records/get_chain_transactions.js';
+import { getFiatValues } from '../fiat/get_fiat_values.js';
+import harmony from '../harmony/harmony.json' with { type: 'json' };
+
+const categories = harmony.categories;
 
 const earlyStartDate = '2017-08-24T08:57:37.000Z';
 const interval = retryCount => Math.random() * 5000 * 2 ** retryCount;
@@ -103,7 +105,7 @@ const times = 10;
     [payments_csv]: <CSV String>
   }
 */
-export default (args, cbk) => {
+const getAccountingReport = (args, cbk) => {
   return new Promise((resolve, reject) => {
     asyncAuto({
       // Check arguments
@@ -421,3 +423,5 @@ export default (args, cbk) => {
     returnResult({reject, resolve, of: 'report'}, cbk));
   });
 };
+
+export { getAccountingReport }

@@ -1,10 +1,12 @@
 import asyncAuto from 'async/auto.js';
 import asyncMapSeries from 'async/mapSeries.js';
 import asyncRetry from 'async/retry.js';
-import { getChainTransactions, getClosedChannels, getHeight, getSweepTransactions } from 'ln-service';
+import { getChainTransactions as ln_getChainTransactions, getClosedChannels, getHeight, getSweepTransactions } from 'ln-service';
 import { returnResult } from 'asyncjs-util';
 import { Transaction } from 'bitcoinjs-lib';
-import { getProxyTx, getProxyVout } from '../esplora/index.js';
+
+import { getProxyTx } from '../esplora/get_proxy_tx.js';
+import { getProxyVout } from '../esplora/get_proxy_vout.js';
 
 const dateAsMs = date => new Date(date).getTime();
 const {fromHex} = Transaction;
@@ -42,7 +44,7 @@ const times = 15;
     }]
   }
 */
-export default ({after, before, lnd, network, request}, cbk) => {
+const getChainTransactions = ({after, before, lnd, network, request}, cbk) => {
   return new Promise((resolve, reject) => {
     asyncAuto({
       // Check arguments
@@ -71,12 +73,12 @@ export default ({after, before, lnd, network, request}, cbk) => {
       getTx: ['getHeight', ({getHeight}, cbk) => {
         // Exit early when there is no after constraint
         if (!after) {
-          return getChainTransactions({lnd}, cbk);
+          return ln_getChainTransactions({lnd}, cbk);
         }
 
         const height = getHeight.current_block_height;
 
-        return getChainTransactions({
+        return ln_getChainTransactions({
           lnd,
           after: height - msAsBlocks(now() - dateAsMs(after)),
         },
@@ -292,3 +294,5 @@ export default ({after, before, lnd, network, request}, cbk) => {
     returnResult({reject, resolve, of: 'transactions'}, cbk));
   });
 };
+
+export { getChainTransactions }

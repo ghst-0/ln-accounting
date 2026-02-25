@@ -1,5 +1,5 @@
 import harmony from './harmony.json' with { type: 'json' };
-import harmonize from './harmonize.js';
+import { harmonize } from './harmonize.js';
 
 const {isArray} = Array;
 const {keys} = Object;
@@ -40,7 +40,7 @@ const {keys} = Object;
     [$category_csv]: <CSV String>
   }
 */
-export default ({records}) => {
+const categorizeRecords = ({records}) => {
   if (!isArray(records)) {
     throw new Error('ExpectedRecordsArrayToCategorize');
   }
@@ -58,3 +58,5 @@ export default ({records}) => {
 
   return report;
 };
+
+export { categorizeRecords }

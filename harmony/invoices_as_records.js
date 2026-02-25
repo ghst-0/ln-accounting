@@ -32,7 +32,7 @@ const {isArray} = Array;
     }]
   }
 */
-export default ({invoices}) => {
+const invoicesAsRecords = ({invoices}) => {
   if (!isArray(invoices)) {
     throw new Error('ExpectedArrayOfInvoicesToMapToAccountingRecords');
   }
@@ -65,3 +65,5 @@ export default ({invoices}) => {
 
   return {records};
 };
+
+export { invoicesAsRecords }

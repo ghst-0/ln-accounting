@@ -11,7 +11,7 @@
     notes: <Harmony Record Notes String>
   }
 */
-export default args => {
+const notesForChainTransaction = args => {
   const addresses = args.output_addresses.join(' ');
 
   if (!args.description) {
@@ -20,3 +20,5 @@ export default args => {
 
   return {notes: `${args.description} - Outputs to ${addresses}`};
 };
+
+export { notesForChainTransaction }

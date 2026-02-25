@@ -32,7 +32,7 @@ import harmony from './harmony.json' with { type: 'json' };
     }]
   }
 */
-export default args => {
+const paymentsAsRecords = args => {
   // Only look at payments where funds were sent
   const payRecords = args.payments.map(payment => {
     const isToSelf = payment.destination === args.public_key;
@@ -80,3 +80,5 @@ export default args => {
 
   return {records};
 };
+
+export { paymentsAsRecords }

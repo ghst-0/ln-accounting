@@ -20,7 +20,7 @@ const url = (net, id) => `https://blockstream.info/${net}api/tx/${id}`;
     tokens: <Transaction Output Tokens Number>
   }
 */
-export default ({id, network, request, vout}, cbk) => {
+const getBlockstreamVout = ({id, network, request, vout}, cbk) => {
   return new Promise((resolve, reject) => {
     asyncAuto({
       // Check argument
@@ -78,3 +78,5 @@ export default ({id, network, request, vout}, cbk) => {
     returnResult({reject, resolve, of: 'getDetails'}, cbk));
   });
 };
+
+export { getBlockstreamVout }

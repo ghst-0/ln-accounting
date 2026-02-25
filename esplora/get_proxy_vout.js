@@ -1,7 +1,7 @@
 import asyncAuto from 'async/auto.js';
 import { returnResult } from 'asyncjs-util';
 
-import getEsploraVout from './get_esplora_vout.js';
+import { getEsploraVout } from './get_esplora_vout.js';
 
 const apiBlockstreamBtc = 'https://blockstream.info/api/';
 const apiBlockstreamBtcTestnet = 'https://blockstream.info/testnet/api/';
@@ -23,7 +23,7 @@ const random = arr => arr[Math.floor(Math.random() * arr.length)];
     tokens: <Transaction Output Tokens Number>
   }
 */
-export default ({id, network, request, vout}, cbk) => {
+const getProxyVout = ({id, network, request, vout}, cbk) => {
   return new Promise((resolve, reject) => {
     asyncAuto({
       // Check arguments
@@ -60,3 +60,5 @@ export default ({id, network, request, vout}, cbk) => {
     returnResult({reject, resolve, of: 'getVout'}, cbk));
   });
 };
+
+export { getProxyVout }

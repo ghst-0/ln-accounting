@@ -1,7 +1,7 @@
 import test from 'node:test';
 import { deepEqual, rejects } from 'node:assert/strict';
 
-import { getAllInvoices } from '../../records/index.js';
+import { getAllInvoices } from '../../records/get_all_invoices.js';
 
 const tests = [
   {

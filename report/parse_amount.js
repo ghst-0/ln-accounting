@@ -21,7 +21,7 @@ const {round} = Math;
     tokens: <Tokens Number>
   }
 */
-export default ({amount, variables}) => {
+const parseAmount = ({amount, variables}) => {
   if (isArray(amount)) {
     throw new Error('CannotParseMultipleAmounts');
   }
@@ -71,3 +71,5 @@ export default ({amount, variables}) => {
 
   return {tokens: round(parsed.result)};
 };
+
+export { parseAmount }

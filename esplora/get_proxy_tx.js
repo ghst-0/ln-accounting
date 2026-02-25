@@ -1,7 +1,7 @@
 import asyncAuto from 'async/auto.js';
 import { returnResult } from 'asyncjs-util';
 
-import getEsploraTx from './get_esplora_tx.js';
+import { getEsploraTx } from './get_esplora_tx.js';
 
 const apiBlockstreamBtc = 'https://blockstream.info/api/';
 const apiBlockstreamBtcTestnet = 'https://blockstream.info/testnet/api/';
@@ -28,7 +28,7 @@ const random = arr => arr[Math.floor(Math.random() * arr.length)];
     output_addresses: [<Transaction Output Address String>]
   }
 */
-export default ({id, network, request}, cbk) => {
+const getProxyTx = ({id, network, request}, cbk) => {
   return new Promise((resolve, reject) => {
     asyncAuto({
       // Check arguments
@@ -72,3 +72,5 @@ export default ({id, network, request}, cbk) => {
     returnResult({reject, resolve, of: 'tx'}, cbk));
   });
 };
+
+export { getProxyTx }

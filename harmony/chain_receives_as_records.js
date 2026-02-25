@@ -1,5 +1,5 @@
 import harmony from './harmony.json' with { type: 'json' };
-import notesForChainTransaction from './notes_for_chain_transaction.js';
+import { notesForChainTransaction } from './notes_for_chain_transaction.js';
 
 const {isArray} = Array;
 
@@ -33,7 +33,7 @@ const {isArray} = Array;
     }]
   }
 */
-export default args => {
+const chainReceivesAsRecords = args => {
   if (!args) {
     throw new Error('ExpectedArgumentsToMapReceiveRecords');
   }
@@ -60,3 +60,5 @@ export default args => {
 
   return {records};
 };
+
+export { chainReceivesAsRecords }

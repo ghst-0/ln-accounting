@@ -44,7 +44,7 @@ const limit = 1000;
     }]
   }
 */
-export default ({after, before, lnd}, cbk) => {
+const getAllInvoices = ({after, before, lnd}, cbk) => {
   return new Promise((resolve, reject) => {
     asyncAuto({
       // Check arguments
@@ -122,3 +122,5 @@ export default ({after, before, lnd}, cbk) => {
     returnResult({reject, resolve, of: 'getInvoices'}, cbk));
   });
 };
+
+export { getAllInvoices }

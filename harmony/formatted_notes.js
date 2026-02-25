@@ -9,10 +9,12 @@
     notes: <Formatted Notes String>
   }
 */
-export default ({notes}) => {
+const formattedNotes = ({notes}) => {
   if (typeof notes === 'string') {
     return {notes: notes.replaceAll(/[\r\n]/gim, ' ') || ''};
   }
 
   return {notes: notes || ''};
 };
+
+export { formattedNotes }

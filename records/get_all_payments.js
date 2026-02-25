@@ -85,7 +85,7 @@ const paymentsPagingLimit = 100;
     }]
   }
 */
-export default ({after, lnd}, cbk) => {
+const getAllPayments = ({after, lnd}, cbk) => {
   return new Promise((resolve, reject) => {
     asyncAuto({
       // Check arguments
@@ -148,3 +148,5 @@ export default ({after, lnd}, cbk) => {
     returnResult({reject, resolve, of: 'payments'}, cbk));
   });
 };
+
+export { getAllPayments }

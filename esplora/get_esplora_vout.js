@@ -17,7 +17,7 @@ const url = (api, id) => `${api}tx/${id}`;
     tokens: <Transaction Output Tokens Number>
   }
 */
-export default ({api, id, request, vout}, cbk) => {
+const getEsploraVout = ({api, id, request, vout}, cbk) => {
   return new Promise((resolve, reject) => {
     asyncAuto({
       // Check argument
@@ -71,3 +71,5 @@ export default ({api, id, request, vout}, cbk) => {
     returnResult({reject, resolve, of: 'getDetails'}, cbk));
   });
 };
+
+export { getEsploraVout }

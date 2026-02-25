@@ -1,4 +1,4 @@
-import formattedNotes from './formatted_notes.js';
+import { formattedNotes } from './formatted_notes.js';
 
 const fiatDenominator = 1e8 * 100;
 const {isArray} = Array;
@@ -44,7 +44,7 @@ const {isArray} = Array;
     }]
   }
 */
-export default ({currency, fiat, records}) => {
+const recordsWithFiat = ({currency, fiat, records}) => {
   if (!isArray(records)) {
     throw new Error('ExpectedArrayOfRecordsToMapToFiatRecords');
   }
@@ -70,3 +70,5 @@ export default ({currency, fiat, records}) => {
 
   return {records: recordsWithFiat};
 };
+
+export { recordsWithFiat }

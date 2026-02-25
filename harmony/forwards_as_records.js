@@ -30,7 +30,7 @@ const {isArray} = Array;
     }]
   }
 */
-export default ({forwards}) => {
+const forwardsAsRecords = ({forwards}) => {
   if (!isArray(forwards)) {
     throw new Error('ExpectedArrayOfForwardsToFormatAsAccountingRecords');
   }
@@ -47,3 +47,5 @@ export default ({forwards}) => {
 
   return {records};
 };
+
+export { forwardsAsRecords }

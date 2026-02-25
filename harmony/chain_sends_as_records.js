@@ -23,7 +23,7 @@ import harmony from './harmony.json' with { type: 'json' };
     channel_transaction_ids: [<Channel Transaction Id Hex String>]
   }
 */
-export default args => {
+const chainSendsAsRecords = args => {
   const records = args.transactions
     .filter(tx => !!tx.is_confirmed && !!tx.tokens && !!tx.is_outgoing)
     .filter(({id}) => !args.channel_transaction_ids.some(n => n === id))
@@ -38,3 +38,5 @@ export default args => {
 
   return {records};
 };
+
+export { chainSendsAsRecords }

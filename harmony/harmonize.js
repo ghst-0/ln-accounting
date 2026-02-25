@@ -30,7 +30,7 @@ const {isArray} = Array;
     csv: <Harmony Format CSV String>
   }
 */
-export default ({records}) => {
+const harmonize = ({records}) => {
   if (!isArray(records)) {
     throw new Error('ExpectedRecordsToConvertToHarmonyFormat');
   }
@@ -52,3 +52,5 @@ export default ({records}) => {
 
   return {csv: parser.parse(harmonyRecords)};
 };
+
+export { harmonize }
